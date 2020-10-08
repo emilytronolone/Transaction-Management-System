@@ -4,6 +4,8 @@
  * It contains one additional attribute - directDeposit.
  * @author Devin Gulati, Emily Tronolone
  */
+import java.text.DecimalFormat;
+
 public class Checking extends Account {
     private boolean directDeposit;
 
@@ -25,8 +27,13 @@ public class Checking extends Account {
      */
     @Override
     public double monthlyInterest() {
+    	DecimalFormat df = new DecimalFormat("#.00");
+    	
+    	if (this.getBalance() < 0) {
+    		return 0;
+    	}
         double rate = (0.05/100)/12;
-        return this.getBalance()*rate;
+        return Double.parseDouble(df.format(this.getBalance()*rate));
     }
 
     /**

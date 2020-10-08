@@ -4,6 +4,7 @@ It is a subclass of Account and overrides the two abstract methods.
 It contains one additional attribute - the number of withdrawals.
 @author Devin Gulati, Emily Tronolone
 */
+import java.text.DecimalFormat;
 
 public class MoneyMarket extends Account {
     private int withdrawals;
@@ -25,8 +26,13 @@ public class MoneyMarket extends Account {
 	 */
 	@Override
     public double monthlyInterest() {
+		DecimalFormat df = new DecimalFormat("#.00");
+		
+		if (this.getBalance() < 0) {
+    		return 0;
+    	}
     	double rate = (0.65/100)/12;
-    	return this.getBalance()*rate;
+    	return Double.parseDouble(df.format(this.getBalance()*rate));
 	}
     
 	/**
@@ -40,4 +46,12 @@ public class MoneyMarket extends Account {
 		}
 		return 12;
 	}
+    
+    /**
+     * Setter method for withdrawals. Solely for testing purposes.
+     * @param num: number of withdrawals to add to current amount of withdrawals
+     */
+    public void setWithdrawals(int num) {
+    	this.withdrawals+=num;
+    }
 }

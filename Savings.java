@@ -4,6 +4,7 @@ It is a subclass of Account and overrides the two abstract methods.
 It contains one additional attribute - isLoyal.
 @author Devin Gulati, Emily Tronolone
 */
+import java.text.DecimalFormat;
 
 public class Savings extends Account {
     private boolean isLoyal;
@@ -26,13 +27,18 @@ public class Savings extends Account {
 	 */
 	@Override
     public double monthlyInterest() {
+		DecimalFormat df = new DecimalFormat("#.00");
+		
+		if (this.getBalance() < 0) {
+    		return 0;
+    	}
     	double rate = 0;
     	if (isLoyal) {
     		rate = (0.35/100)/12;
     	} else {
     		rate = (0.25/100)/12;
     	}
-    	return this.getBalance()*rate;
+    	return Double.parseDouble(df.format(this.getBalance()*rate));
 	}
     
     /**
