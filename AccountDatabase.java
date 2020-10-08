@@ -4,6 +4,8 @@ The methods implement various functionalities of the database.
 It also allows for an account to deposit and withdraw.
 @author Devin Gulati, Emily Tronolone
 */
+import java.text.DecimalFormat;
+
 public class AccountDatabase {
 	private Account[] accounts;
 	private int size;
@@ -52,11 +54,11 @@ public class AccountDatabase {
         if (this.find(account) > (-1)) {
             return false;
         }
+        this.accounts[this.size] = account;
         this.size++;
         if (this.size >= this.accounts.length) {
             grow();
         }
-        this.accounts[this.size] = account;
         return true;
     }
 
@@ -102,8 +104,8 @@ public class AccountDatabase {
         if (i == -1) {
             return -1;
         }
-        if (account.getBalance() - amount >= 0) {
-            account.debit(amount);
+        if (accounts[i].getBalance() - amount >= 0) {
+            accounts[i].debit(amount);
             return 0;
         } else {
             return 1;
@@ -116,9 +118,9 @@ public class AccountDatabase {
     private void sortByDateOpen() {
         for(int i = 1; i < size; i++){
             Account temp = this.accounts[i];
-            int j = i -1;
-            while(j >= 0 && this.accounts[i].getDateOpen().compareTo(temp.getDateOpen()) == 1){
-                this.accounts[j+1] = this.accounts[j];
+            int j = i - 1;
+            while (j >= 0 && this.accounts[j].getDateOpen().compareTo(temp.getDateOpen()) == 1){
+                this.accounts[j + 1] = this.accounts[j];
                 j--;
             }
             this.accounts[j+1] = temp;
@@ -133,7 +135,7 @@ public class AccountDatabase {
         for(int i = 1; i < size; i++){
             Account temp = this.accounts[i];
             int j = i -1;
-            while(j >= 0 && this.accounts[i].getHolder().getLname().toUpperCase().compareTo(temp.getHolder().getLname().toUpperCase()) > 0){
+            while(j >= 0 && this.accounts[j].getHolder().getLname().toUpperCase().compareTo(temp.getHolder().getLname().toUpperCase()) > 0){
                 this.accounts[j+1] = this.accounts[j];
                 j--;
             }
@@ -145,13 +147,20 @@ public class AccountDatabase {
      * Displays databases sorted by date opened
      */
     public void printByDateOpen() {
-        if (accounts.length == 0) {
+    	if (this.size == 0) {
             System.out.println("Database is empty.");
             return;
         }
-        sortByDateOpen();
+    	this.sortByDateOpen();
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        System.out.println("--Printing statements by date open--\n");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
+            System.out.println("-interest: " + accounts[i].monthlyInterest());
+            System.out.println("-fee: " + accounts[i].monthlyFee());
+            System.out.println("-new balance: " +
+                    format.format(accounts[i].getBalance() + (accounts[i].monthlyInterest()) -
+                            accounts[i].monthlyFee()) + "\n");
         }
     }
 
@@ -159,13 +168,20 @@ public class AccountDatabase {
      * Displays database sorted by last name
      */
     public void printByLastName() {
-        if (accounts.length == 0) {
+    	if (this.size == 0) {
             System.out.println("Database is empty.");
             return;
         }
-        sortByLastName();
+    	this.sortByLastName();
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        System.out.println("--Printing statements by last name--\n");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
+            System.out.println("-interest: " + accounts[i].monthlyInterest());
+            System.out.println("-fee: " + accounts[i].monthlyFee());
+            System.out.println("-new balance: " +
+                    format.format(accounts[i].getBalance() + (accounts[i].monthlyInterest()) -
+                            accounts[i].monthlyFee()) + "\n");
         }
     }
 
@@ -173,13 +189,15 @@ public class AccountDatabase {
      * Displays database
      */
     public void printAccounts() {
-        if (accounts.length == 0) {
+    	if (this.size == 0) {
             System.out.println("Database is empty.");
             return;
         }
+    	System.out.println("--Listing all accounts in database--");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
         }
+        System.out.println("--end of listing--");
     }
 
     /**

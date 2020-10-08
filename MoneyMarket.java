@@ -48,6 +48,32 @@ public class MoneyMarket extends Account {
 	}
     
     /**
+     * Overrides debit method in Account to keep track of withdrawal count
+     * @param amount amount to decrease balance by
+     */
+    @Override
+    public void debit(double amount) {
+        this.withdrawals++;
+        super.debit(amount);
+    }
+
+    /**
+     * Overrides account toString method
+     * @return string representation of account
+     */
+    @Override
+    public String toString() {
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        if(this.withdrawals == 1)
+            return "*Money Market*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen() + "*1 withdrawal*";
+        else{
+            return "*Money Market*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen() + "*" + this.withdrawals + " withdrawals*";
+        }
+    }
+    
+    /**
      * Setter method for withdrawals. Solely for testing purposes.
      * @param num: number of withdrawals to add to current amount of withdrawals
      */

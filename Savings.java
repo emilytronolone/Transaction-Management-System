@@ -52,4 +52,20 @@ public class Savings extends Account {
 		}
 		return 5;
 	}
+    
+    /**
+     * Overrides account toString method
+     * @return string representation of account
+     */
+    @Override
+    public String toString() {
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        if(this.isLoyal) {
+            return "*Savings*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen() + "*special Savings account*";
+        }else{
+            return "*Savings*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen();
+        }
+    }
 }

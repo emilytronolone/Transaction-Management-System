@@ -40,7 +40,7 @@ public class Profile {
 	 * @return true if equal, false otherwise
 	 */
 	public boolean profileEquals(Profile profile) {
-		if ((this.fname == profile.fname) && (this.lname == profile.lname)) {
+		if ((this.fname.equals(profile.fname)) && (this.lname.equals(profile.lname))) {
 			return true;
 		}
 		return false;

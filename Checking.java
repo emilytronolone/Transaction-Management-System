@@ -47,4 +47,21 @@ public class Checking extends Account {
         }
         return 25;
     }
+    
+    /**
+     * Overrides account toString method
+     * @return string representation of account
+     */
+    @Override
+    public String toString() {
+        DecimalFormat format = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+
+        if(this.directDeposit) {
+            return "*Checking*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen() + "*direct deposit account*";
+        }else{
+            return "*Checking*" + this.getHolder().getFname() + " " + this.getHolder().getLname() + "* " +
+                    format.format(this.getBalance()) + "*" + this.getDateOpen();
+        }
+    }
 }

@@ -75,16 +75,21 @@ public abstract class Account {
 	 * @return true if equal, false otherwise
 	 */
 	public boolean accountEquals(Account account) {
-		if((this.holder.profileEquals(account.holder)) && (this.balance == account.balance) && (this.dateOpen.compareTo(account.dateOpen) == 0)) {
+		if ((this.holder.profileEquals(account.holder)) && (this.getClass().getName().equals(account.getClass().getName()))) {
 			return true;
 		}
 		return false;
 	}
 
 	/**
-	 * abstract methods that will be implemented in Account's subclasses
+	 * Abstract method that will be implemented in Account's subclasses. Calculates monthly interest.
 	 * @return double
 	 */
 	public abstract double monthlyInterest();
+	
+	/**
+	 * Abstract method that will be implemented in Account's subclasses. Calculates monthly fee.
+	 * @return double
+	 */
 	public abstract double monthlyFee();
 }

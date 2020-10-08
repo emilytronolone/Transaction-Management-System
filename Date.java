@@ -80,19 +80,7 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public String toString() {
-        String month = "" + this.month;
-        if(month.length() < 2){
-            month = "0" + month;
-        }
-        String day = "" + this.day;
-        if(day.length() < 2){
-            day = "0" + day;
-        }
-        String year = "" + this.year;
-        while(year.length() < 4){
-            year = "0" + year;
-        }
-        return month + "/" + day + "/" + year;
+    	return this.month + "/" + this.day + "/" + this.year;
     } //in the format mm/dd/yyyy
 
     /**
@@ -104,13 +92,14 @@ public class Date implements Comparable<Date> {
             return false;
         }
         int[] dates = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        if (this.year % 4 == 0){
-        	if (this.year % 100 == 0) {
-        		if (this.year % 400 == 0) {
-        			dates[1] = 29;
-        		}
-        	}
+        
+        if (this.year % 400 == 0) {
+        	dates[1] = 29;
         }
+        if (this.year % 4 == 0){
+        	dates[1] = 29;
+        }
+        
 
         if (this.day > dates[this.month-1] || this.day < 1){
             return false;
