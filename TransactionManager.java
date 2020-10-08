@@ -24,7 +24,7 @@ public class TransactionManager {
             switch (tokens[1]) { // first element of this array should always be the command
                 case "OC":{
                     if(tokens.length != 7){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -41,12 +41,13 @@ public class TransactionManager {
                         Checking account = new Checking(holder, Double.parseDouble(tokens[4]), date,Boolean.parseBoolean(tokens[6]));
 
                         if(!database.add(account)){
-                            System.out.println("Account is already in the database");
+                            System.out.println("Account is already in the database.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                    	e.printStackTrace();
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -54,7 +55,7 @@ public class TransactionManager {
                 }
                 case "OS":{
                     if(tokens.length != 7){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -71,12 +72,12 @@ public class TransactionManager {
                         Savings account = new Savings(holder, Double.parseDouble(tokens[4]), date,Boolean.parseBoolean(tokens[6]));
 
                         if(!database.add(account)){
-                            System.out.println("Account is already in the database");
+                            System.out.println("Account is already in the database.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -84,7 +85,7 @@ public class TransactionManager {
                 }
                 case "OM":{
                     if(tokens.length != 6){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -101,12 +102,12 @@ public class TransactionManager {
                         MoneyMarket account = new MoneyMarket(holder, Double.parseDouble(tokens[4]), date);
 
                         if(!database.add(account)){
-                            System.out.println("Account is already in the database");
+                            System.out.println("Account is already in the database.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -115,7 +116,7 @@ public class TransactionManager {
 
                 case "CC":{
                     if(tokens.length != 4){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -132,10 +133,10 @@ public class TransactionManager {
                         if(!database.remove(account)){
                             System.out.println("Account does not exist.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -144,7 +145,7 @@ public class TransactionManager {
                 }
                 case "CS":{
                     if(tokens.length != 4){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -161,10 +162,10 @@ public class TransactionManager {
                         if(!database.remove(account)){
                             System.out.println("Account does not exist.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -173,7 +174,7 @@ public class TransactionManager {
                 }
                 case "CM":{
                     if(tokens.length != 4){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -190,10 +191,10 @@ public class TransactionManager {
                         if(!database.remove(account)){
                             System.out.println("Account does not exist.");
                         }else{
-                            System.out.println("Account opened and added to the database");
+                            System.out.println("Account opened and added to the database.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -203,7 +204,7 @@ public class TransactionManager {
 
                 case "DC":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -224,7 +225,7 @@ public class TransactionManager {
                             System.out.println();
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -233,7 +234,7 @@ public class TransactionManager {
                 }
                 case "DS":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -254,7 +255,7 @@ public class TransactionManager {
                             System.out.println();
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -263,7 +264,7 @@ public class TransactionManager {
                 }
                 case "DM":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -284,7 +285,7 @@ public class TransactionManager {
                             System.out.println();
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -295,7 +296,7 @@ public class TransactionManager {
 
                 case "WC":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -314,12 +315,12 @@ public class TransactionManager {
                         if(withdrawal == -1){
                             System.out.println("Account does not exist.");
                         }else if (withdrawal == 0){
-                            System.out.println(amount + " withdrawn from account");
+                            System.out.println(amount + " withdrawn from account.");
                         }else{
-                            System.out.println("Insufficient funds");
+                            System.out.println("Insufficient funds.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -328,7 +329,7 @@ public class TransactionManager {
                 }
                 case "WS":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -347,12 +348,12 @@ public class TransactionManager {
                         if(withdrawal == -1){
                             System.out.println("Account does not exist.");
                         }else if (withdrawal == 0){
-                            System.out.println(amount + " withdrawn from account");
+                            System.out.println(amount + " withdrawn from account.");
                         }else{
-                            System.out.println("Insufficient funds");
+                            System.out.println("Insufficient funds.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -361,7 +362,7 @@ public class TransactionManager {
                 }
                 case "WM":{
                     if(tokens.length != 5){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                     }
 
@@ -380,12 +381,12 @@ public class TransactionManager {
                         if(withdrawal == -1){
                             System.out.println("Account does not exist.");
                         }else if (withdrawal == 0){
-                            System.out.println(amount + " withdrawn from account");
+                            System.out.println(amount + " withdrawn from account.");
                         }else{
-                            System.out.println("Insufficient funds");
+                            System.out.println("Insufficient funds.");
                         }
                     }catch (Exception e){
-                        System.out.println("Input data type mismatch");
+                        System.out.println("Input data type mismatch.");
                         break;
                     }
 
@@ -399,7 +400,7 @@ public class TransactionManager {
                         break;
                     }
                 	if(tokens.length != 3){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                 	}
                     database.printAccounts();
@@ -410,7 +411,7 @@ public class TransactionManager {
                         break;
                     }
                 	if(tokens.length != 3){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                 	}
                     database.printByDateOpen();
@@ -421,20 +422,20 @@ public class TransactionManager {
                         break;
                     }
                 	if(tokens.length != 3){
-                        System.out.println("Invalid input");
+                        System.out.println("Invalid input.");
                         break;
                 	}
                     database.printByLastName();
                 }
 
                 default:{
-                    System.out.println("Command '" + tokens[1] + "' isn't supported");
+                    System.out.println("Command '" + tokens[1] + "' isn't supported!");
                     break;
                 }
             }
             command = scanner.nextLine();
         }
-        System.out.println("Transaction processing completed");
+        System.out.println("Transaction processing completed.");
         scanner.close();
 		System.exit(0);
     }

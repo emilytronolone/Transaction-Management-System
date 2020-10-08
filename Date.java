@@ -16,7 +16,7 @@ public class Date implements Comparable<Date> {
      * @param month: month is set equal to this.month
      * @param day: day is set equal to this.day
      */
-    public Date(int year, int month, int day){
+    public Date(int month, int day, int year){
         this.year = year;
         this.month = month;
         this.day = day;

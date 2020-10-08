@@ -22,7 +22,7 @@ public class AccountDatabase {
      * @return index found, -1 otherwise
      */
     private int find(Account account) {
-        for (int i = 0; i < accounts.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (accounts[i].accountEquals(account)) {
                 return i;
             }
@@ -52,11 +52,11 @@ public class AccountDatabase {
         if (this.find(account) > (-1)) {
             return false;
         }
+        this.size++;
         if (this.size >= this.accounts.length) {
             grow();
         }
         this.accounts[this.size] = account;
-        this.size++;
         return true;
     }
 
