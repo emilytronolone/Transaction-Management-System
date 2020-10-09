@@ -123,9 +123,8 @@ public class AccountDatabase {
                 this.accounts[j + 1] = this.accounts[j];
                 j--;
             }
-            this.accounts[j+1] = temp;
+            this.accounts[j + 1] = temp;
         }
-
     }
 
     /**
@@ -134,12 +133,12 @@ public class AccountDatabase {
     private void sortByLastName() {
         for(int i = 1; i < size; i++){
             Account temp = this.accounts[i];
-            int j = i -1;
+            int j = i - 1;
             while(j >= 0 && this.accounts[j].getHolder().getLname().toUpperCase().compareTo(temp.getHolder().getLname().toUpperCase()) > 0){
-                this.accounts[j+1] = this.accounts[j];
+                this.accounts[j + 1] = this.accounts[j];
                 j--;
             }
-            this.accounts[j+1] = temp;
+            this.accounts[j + 1] = temp;
         }
     }
 
@@ -156,12 +155,14 @@ public class AccountDatabase {
         System.out.println("--Printing statements by date open--\n");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
-            System.out.println("-interest: " + accounts[i].monthlyInterest());
-            System.out.println("-fee: " + accounts[i].monthlyFee());
+            System.out.println("-interest: " + format.format(accounts[i].monthlyInterest()));
+            System.out.println("-fee: " + format.format(accounts[i].monthlyFee()));
             System.out.println("-new balance: " +
                     format.format(accounts[i].getBalance() + (accounts[i].monthlyInterest()) -
                             accounts[i].monthlyFee()) + "\n");
+            accounts[i].setBalance(accounts[i].monthlyInterest() - accounts[i].monthlyFee());
         }
+        System.out.println("--end of printing--");
     }
 
     /**
@@ -177,12 +178,14 @@ public class AccountDatabase {
         System.out.println("--Printing statements by last name--\n");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
-            System.out.println("-interest: " + accounts[i].monthlyInterest());
-            System.out.println("-fee: " + accounts[i].monthlyFee());
+            System.out.println("-interest: " + format.format(accounts[i].monthlyInterest()));
+            System.out.println("-fee: " + format.format(accounts[i].monthlyFee()));
             System.out.println("-new balance: " +
                     format.format(accounts[i].getBalance() + (accounts[i].monthlyInterest()) -
                             accounts[i].monthlyFee()) + "\n");
+            accounts[i].setBalance(accounts[i].monthlyInterest() - accounts[i].monthlyFee());
         }
+        System.out.println("--end of printing--");
     }
 
     /**
@@ -193,7 +196,7 @@ public class AccountDatabase {
             System.out.println("Database is empty.");
             return;
         }
-    	System.out.println("--Listing all accounts in database--");
+    	System.out.println("--Listing accounts in database--");
         for(int i = 0; i < size; i++){
             System.out.println(accounts[i].toString());
         }

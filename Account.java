@@ -68,6 +68,14 @@ public abstract class Account {
 	public double getBalance() {
 		return this.balance;
 	}
+	
+	/**
+	 * Setter Method for balance
+	 * @param amount: amount to add to current balance
+	 */
+	public void setBalance(double amount) {
+		this.balance += amount;
+	}
 
 	/**
 	 * Comparator method for accounts

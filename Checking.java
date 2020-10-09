@@ -27,13 +27,11 @@ public class Checking extends Account {
      */
     @Override
     public double monthlyInterest() {
-    	DecimalFormat df = new DecimalFormat("#.00");
-    	
     	if (this.getBalance() < 0) {
     		return 0;
     	}
         double rate = (0.05/100)/12;
-        return Double.parseDouble(df.format(this.getBalance()*rate));
+        return this.getBalance()*rate;
     }
 
     /**
@@ -42,7 +40,7 @@ public class Checking extends Account {
      */
     @Override
     public double monthlyFee() {
-        if ((this.getBalance() >= 1500) || (!directDeposit)) {
+        if ((this.getBalance() >= 1500) || (this.directDeposit)) {
             return 0;
         }
         return 25;

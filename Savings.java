@@ -27,8 +27,6 @@ public class Savings extends Account {
 	 */
 	@Override
     public double monthlyInterest() {
-		DecimalFormat df = new DecimalFormat("#.00");
-		
 		if (this.getBalance() < 0) {
     		return 0;
     	}
@@ -38,7 +36,7 @@ public class Savings extends Account {
     	} else {
     		rate = (0.25/100)/12;
     	}
-    	return Double.parseDouble(df.format(this.getBalance()*rate));
+    	return this.getBalance()*rate;
 	}
     
     /**

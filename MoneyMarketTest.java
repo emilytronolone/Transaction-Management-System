@@ -24,8 +24,8 @@ class MoneyMarketTest {
 		MoneyMarket m3 = new MoneyMarket(p1, -500, d1);
 		MoneyMarket m4 = new MoneyMarket(p1, 12345, d1);
 		assertEquals(m1.monthlyInterest(), 0.27);
-		assertEquals(m2.monthlyInterest(), 0);
-		assertEquals(m3.monthlyInterest(), 0);
+		assertEquals(m2.monthlyInterest(), 0.00);
+		assertEquals(m3.monthlyInterest(), 0.00);
 		assertEquals(m4.monthlyInterest(), 6.69);
 		//fail("Not yet implemented");
 	}
@@ -46,13 +46,13 @@ class MoneyMarketTest {
 		MoneyMarket m5 = new MoneyMarket(p1, -500, d1);
 		MoneyMarket m6 = new MoneyMarket(p1, 2499, d1);
 		MoneyMarket m7 = new MoneyMarket(p1, 3000, d1);
-		assertEquals(m1.monthlyFee(), 12);
-		assertEquals(m2.monthlyFee(), 0);
-		assertEquals(m3.monthlyFee(), 12);
-		assertEquals(m4.monthlyFee(), 12);
-		assertEquals(m5.monthlyFee(), 12);
-		assertEquals(m6.monthlyFee(), 12);
-		assertEquals(m7.monthlyFee(), 0);
+		assertEquals(m1.monthlyFee(), 12.00);
+		assertEquals(m2.monthlyFee(), 0.00);
+		assertEquals(m3.monthlyFee(), 12.00);
+		assertEquals(m4.monthlyFee(), 12.00);
+		assertEquals(m5.monthlyFee(), 12.00);
+		assertEquals(m6.monthlyFee(), 12.00);
+		assertEquals(m7.monthlyFee(), 0.00);
 		//fail("Not yet implemented");
 	}
 

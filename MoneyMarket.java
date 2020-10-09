@@ -26,13 +26,11 @@ public class MoneyMarket extends Account {
 	 */
 	@Override
     public double monthlyInterest() {
-		DecimalFormat df = new DecimalFormat("#.00");
-		
 		if (this.getBalance() < 0) {
     		return 0;
     	}
     	double rate = (0.65/100)/12;
-    	return Double.parseDouble(df.format(this.getBalance()*rate));
+    	return this.getBalance()*rate;
 	}
     
 	/**
